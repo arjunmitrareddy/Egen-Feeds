@@ -30,7 +30,7 @@ export default class Server {
         this._appServerUp = false;
         this._appServer = http.createServer(this._app);
         this._MongoClient = mongo.MongoClient;
-        this._CrawlerDbUrl = 'mongodb://localhost:27017/crawler';
+        this._CrawlerDbUrl = 'mongodb://heroku_nqrhhj16:bmnh3hpchmmh2s6pjr4ekpc8a@ds023398.mlab.com:23398/heroku_nqrhhj16';
         this._MongoClient.connect(this._CrawlerDbUrl, (err, db) => {
             this._crawlerDb = db;
             this._publicationsCollection = this._crawlerDb.collection('publications');
