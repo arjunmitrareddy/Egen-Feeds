@@ -172,9 +172,15 @@ gulp.task('refresh', (callback) => {
     runSequence('css', 'wire-dep', 'copy', 'babelify-client', 'cache-templates', 'client-bundler', 'babelify-server', callback);
 });
 
+gulp.task('heroku', (callback) => {
+    runSequence('clean', 'cache-templates', 'css', 'wire-dep', 'copy', 'babelify-client', 'client-bundler', 'babelify-server','exit', callback);
+
+});
+
 gulp.task('exit', () => {
     process.exit(0);
 });
+
 
 gulp.task('serve', (callback) => {
     runSequence('clean', 'cache-templates', 'css', 'wire-dep', 'copy', 'babelify-client', 'client-bundler', 'babelify-server','watch', 'server', callback);

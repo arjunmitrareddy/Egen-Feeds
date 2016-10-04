@@ -68,7 +68,10 @@
     "wiredep": "^4.0.0"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dep": "npm install && bower install",
+    "start": "gulp server",
+    "serve": "gulp serve",
+    "postinstall": "bower install && gulp heroku"
   },
   "license": "ISC"
 }
