@@ -17,7 +17,6 @@
   "main": "gulpfile.js",
   "dependencies": {
     "babelify": "^6.2.0",
-    "bing.search": "^1.0.1",
     "body-parser": "^1.15.2",
     "browserify": "^11.0.1",
     "es6-promise": "^3.0.2",
