@@ -57,7 +57,7 @@
   },
   "scripts": {
     "dep": "npm install && bower install",
-    "start": "node build/server/index.js",
+    "start": "gulp server",
     "serve": "gulp serve",
     "postinstall": "bower install && gulp heroku"
   },
