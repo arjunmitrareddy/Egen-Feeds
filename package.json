@@ -54,11 +54,10 @@
     "wiredep": "^4.0.0"
   },
   "devDependencies": {
-
   },
   "scripts": {
     "dep": "npm install && bower install",
-    "start": "gulp serve",
+    "start": "gulp server",
     "serve": "gulp serve",
     "postinstall": "bower install"
   },
