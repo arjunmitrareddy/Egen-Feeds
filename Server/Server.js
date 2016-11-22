@@ -2,7 +2,6 @@ import express from 'express';
 import http from 'http';
 import path from 'path';
 import bodyParser from 'body-parser';
-import Bing from 'bing.search';
 
 export default class Server {
     constructor(port) {
@@ -13,15 +12,6 @@ export default class Server {
         this._app.use(bodyParser.urlencoded({ extended: true }));
         this._app.use(bodyParser.json());
         this._serveStaticFiles();
-        this.bing = new Bing('hoTBqws2VAHTMjE4l7HPAVFbdrLqBm/JkKdjnWnEBMY');
-        this._app.get('/fetch', (req, res) => {
-            this.bing.news('IOT',
-                {top: 5},
-                (err, results) => {
-                    res.send(results);
-                }
-            );
-        });
         this._app.get('*', (req, res) => {
             res.sendFile(path.resolve(__dirname, '../public/index.html'));
         });
@@ -39,7 +29,7 @@ export default class Server {
     }
     _listen() {
         if (!this._appServerUp) {
-            this._appServer.listen(process.env.PORT || this._port, () => {
+            this._appServer.listen(process.env.PORT || this._port, "0.0.0.0", _ => {
                 console.log("\n\n ***** Server Listening on localhost:" + this._port + " ***** \n\n");
             });
             this._appServerUp = true;

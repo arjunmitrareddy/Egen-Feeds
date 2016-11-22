@@ -114,8 +114,8 @@ gulp.task('babelify-client', () => {
     var jsFilter = plugins.filter(['**/*.js', '!**/*.*.js'], {restore: true});
     var appJsFilter = plugins.filter('**/*.*.js', {restore: true});
     gulp.src('public/index.html').pipe(plugins.plumber()).pipe(assets).pipe(cssFilter).pipe(plugins.csso({comments: false})).pipe(plugins.sourcemaps.init()).pipe(plugins.sourcemaps.write('./')).pipe(cssFilter.restore)
-        .pipe(jsFilter)/*.pipe(plugins.uglify())*/.pipe(jsFilter.restore)
-        .pipe(appJsFilter)/*.pipe(plugins.uglify())*/.pipe(plugins.babel({stage: 1})).pipe(jsFilter.restore)
+        .pipe(jsFilter).pipe(plugins.uglify()).pipe(jsFilter.restore)
+        .pipe(appJsFilter).pipe(plugins.uglify()).pipe(plugins.babel({stage: 1})).pipe(jsFilter.restore)
         .pipe(gulp.dest('build/public'))
 });
 
