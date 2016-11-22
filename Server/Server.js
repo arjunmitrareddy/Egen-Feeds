@@ -37,7 +37,6 @@ export default class Server {
         this._app.use('/fonts', express.static('../public/fonts', { maxAge: '1y' }));
         this._app.use('/templates', express.static('../public/templates', { maxAge: '1y' }));
     }
-
     _listen() {
         if (!this._appServerUp) {
             this._appServer.listen(process.env.PORT || this._port, () => {
