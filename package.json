@@ -59,7 +59,7 @@
     "dep": "npm install && bower install",
     "start": "gulp server",
     "serve": "gulp serve",
-    "postinstall": "bower install"
+    "postinstall": "bower install && gulp heroku"
   },
   "engines": {
     "node": "4.1.1"
