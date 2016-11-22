@@ -1,92 +1,241 @@
-<div class="row" style="height: 100%">
-    <aside class="sidebar-left col-xs-2 col-sm-2 col-md-2 col-lg-2">
-            <a href="#">
-                <img style="width: 50%" src="/imgs/favicon.png"/>
-            </a>
-        <div class="sidebar-links">
-            <a class="{{category.class}}" ng-repeat="category in wCtrl.categories" ng-click="wCtrl.selectCategory(category.category)">
-                <i class="fa {{category.fa}}"></i>{{category.category}}
-            </a>
+<div id="HEADERDIV1">
+    <div id="HEADERDIV6">
+        <nav id="HEADERNAV1">
+            <a ui-sref="bing" class="A_10">BING</a>
+            <a ui-sref="webhose" class="A_10">WEBHOSE</a>
+        </nav>
+    </div>
+</div>
+
+<div id="DIV_1">
+    <div id="DIV_2">
+        <div id="DIV_3">
+            <div id="DIV_4">
+            </div>
+            <div id="DIV_5">
+                <div id="DIV_6">
+                    <h1 id="H1_19">
+                        <a href="/review/three-powerful-conversations-managers-must-have-to-develop-their-people/" id="A_20">If {{wCtrl.articles.length}} you think that the internet has changed your life, think again. The IoT is about to change it all over again!</a>
+                    </h1>
+                </div>
+            </div>
         </div>
-    </aside>
-
-    <div class="main-content col-xs-10 col-sm-10 col-md-10 col-lg-10">
-        <div ng-if="wCtrl.defaultLoader" class="headerText" style="text-align: center">
-            <loader-effect></loader-effect>
-            <h1>Industrial IOT</h1>
-        </div>
-        <div ng-if="wCtrl.categories[0].selected">
-            <h1 class="headerText">{{wCtrl.categories[0].category}}</h1>
-            <div class="row">
-                <loader-effect ng-if="!wCtrl.tweetsLoaded"></loader-effect>
-                <div ng-repeat="tweet in wCtrl.finalTweets">
-                    <div class="col-sm-12 col-xs-12 col-md-offset-3 col-lg-offset-3 col-md-6 col-lg-6">
-                            <div class="card">
-                            <div class="card-image">
-                                <div class="imageDiv"><img class="img-responsive" ng-src={{tweet[1].user.profile_image_url}} alt="Image Unavailable"></div>
-                                <div style="margin: 35px;" class="card-title">Tweet by {{tweet[1].user.name}} <span>(@{{tweet[1].user.screen_name}})</span></div>
+    </div>
+    <div id="DIV_21">
+        <div id="DIV_22">
+            <div id="DIV_23">
+                <div id="DIV_24">
+                    <!--<div id="DIV_25">
+                        <div id="DIV_26">
+                            <a href="/review/its-price-before-product-period/" id="A_27"></a>
+                            <div id="DIV_28">
+                                <div id="DIV_29">
+                                    <a href="/review/product/" id="A_30">Product</a><a href="https://twitter.com/intent/tweet?text=It%E2%80%99s%20Price%20Before%20Product.%20Period.%20%20%E2%80%93%20http%3A%2F%2Ffirstround.com%2Freview%2Fits-price-before-product-period%2F%3Futm_content%3DEntryCard%26utm_source%3Dtwitter%26utm_medium%3Dsocial%23rt_u%3D1479496131_dRowgI" tabindex="0" title="Share It’s Price Before Product. Period.  on Twitter" id="A_31"><span id="SPAN_32"></span></a>
+                                    <svg id="svg_33">
+                                        <g id="g_34">
+                                            <path id="path_35">
+                                            </path>
+                                        </g>
+                                    </svg> <a href="https://www.facebook.com/sharer.php?u=http%3A%2F%2Ffirstround.com%2Freview%2Fits-price-before-product-period%2F%3Futm_content%3DEntryCard%26utm_source%3Dfacebook%26utm_medium%3Dsocial%23rt_u%3D1479496131_dRowgI" tabindex="0" title="Share It’s Price Before Product. Period.  on Facebook" id="A_36"><span id="SPAN_37"></span></a>
+                                    <svg id="svg_38">
+                                        <g id="g_39">
+                                            <path id="path_40">
+                                            </path>
+                                        </g>
+                                    </svg>
+                                </div>
+                                <h3 id="H3_41">
+                                    <a href="/review/its-price-before-product-period/" id="A_42">It’s Price Before Product. Period.</a>
+                                </h3>
+                                <p id="P_43">
+                                    Pricing pro Madhavan Ramanujam uncovers a powerful idea: Determine price before you design your product. Here, he details the ways companies trip up when they try to monetize and explains how to do it right.
+                                </p><a href="/review/its-price-before-product-period/" id="A_44">Keep reading</a>
                             </div>
-
-                            <div class="card-content">
-                                <p style="font-weight: bold">{{tweet[1].tweet}}</p>
-                                <br/>
-                                <p style="float: left;font-weight: bold;" ng-if="tweet[1].other.hashtags.length > 0">Tags:</p>
-                                <p style="display: inline-block; margin-right: 5px;" ng-repeat="tag in tweet[1].other.hashtags">
-                                    #{{tag.text}}
-                                </p>
-                                <p>
-
-                                </p>
+                        </div>
+                    </div>-->
+                    <news-card ng-repeat="card in wCtrl.articles" nc="card"></news-card>
+                   <!-- <div id="DIV_45">
+                        <div id="DIV_46">
+                            <a href="/review/what-i-learned-from-developing-branding-for-airbnb-dropbox-and-thumbtack/" id="A_47"></a>
+                            <div id="DIV_48">
+                                <div id="DIV_49">
+                                    <a href="/review/pr-and-marketing/" id="A_50">PR &amp; Marketing</a><a href="https://twitter.com/intent/tweet?text=What%20I%20Learned%20From%20Developing%20Branding%20for%20Airbnb%2C%20Dropbox%20and%20Thumbtack%20%E2%80%93%20http%3A%2F%2Ffirstround.com%2Freview%2Fwhat-i-learned-from-developing-branding-for-airbnb-dropbox-and-thumbtack%2F%3Futm_content%3DEntryCard%26utm_source%3Dtwitter%26utm_medium%3Dsocial%23rt_u%3D1479496131_dRowgI" tabindex="0" title="Share What I Learned From Developing Branding for Airbnb, Dropbox and Thumbtack on Twitter" id="A_51"><span id="SPAN_52"></span></a>
+                                    <svg id="svg_53">
+                                        <g id="g_54">
+                                            <path id="path_55">
+                                            </path>
+                                        </g>
+                                    </svg> <a href="https://www.facebook.com/sharer.php?u=http%3A%2F%2Ffirstround.com%2Freview%2Fwhat-i-learned-from-developing-branding-for-airbnb-dropbox-and-thumbtack%2F%3Futm_content%3DEntryCard%26utm_source%3Dfacebook%26utm_medium%3Dsocial%23rt_u%3D1479496131_dRowgI" tabindex="0" title="Share What I Learned From Developing Branding for Airbnb, Dropbox and Thumbtack on Facebook" id="A_56"><span id="SPAN_57"></span></a>
+                                    <svg id="svg_58">
+                                        <g id="g_59">
+                                            <path id="path_60">
+                                            </path>
+                                        </g>
+                                    </svg>
+                                </div>
+                                <h3 id="H3_61">
+                                    <a href="/review/what-i-learned-from-developing-branding-for-airbnb-dropbox-and-thumbtack/" id="A_62">What I Learned From Developing Branding for Airbnb, Dropbox and Thumbtack</a>
+                                </h3>
+                                <p id="P_63">
+                                    As one of Silicon Valley's most sought-after brand strategists, Julie Supan has helped some of tech's fast-growing companies find their high-expectation customer — and optimal position in the market.
+                                </p><a href="/review/what-i-learned-from-developing-branding-for-airbnb-dropbox-and-thumbtack/" id="A_64">Keep reading</a>
                             </div>
-
-                            <div class="card-action">
-                                <a ng-repeat="url in tweet[1].other.urls" href="{{url.url}}" target="new_blank">Link</a>
+                        </div>
+                    </div>-->
+                </div>
+            </div>
+            <!--<div id="DIV_65">
+                <div id="DIV_66">
+                    <div id="DIV_67">
+                        <div id="DIV_68">
+                            <a href="/review/turbocharge-your-recruiting-machine-heres-how/" id="A_69"></a>
+                            <div id="DIV_70">
+                                <div id="DIV_71">
+                                    <a href="/review/people-and-culture/" id="A_72">People &amp; Culture</a><a href="https://twitter.com/intent/tweet?text=Turbocharge%20Your%20Recruiting%20Machine%20%E2%80%94%20Here%E2%80%99s%20How%20%E2%80%93%20http%3A%2F%2Ffirstround.com%2Freview%2Fturbocharge-your-recruiting-machine-heres-how%2F%3Futm_content%3DEntryCard%26utm_source%3Dtwitter%26utm_medium%3Dsocial%23rt_u%3D1479496131_dRowgI" tabindex="0" title="Share Turbocharge Your Recruiting Machine — Here’s How on Twitter" id="A_73"><span id="SPAN_74"></span></a>
+                                    <svg id="svg_75">
+                                        <g id="g_76">
+                                            <path id="path_77">
+                                            </path>
+                                        </g>
+                                    </svg> <a href="https://www.facebook.com/sharer.php?u=http%3A%2F%2Ffirstround.com%2Freview%2Fturbocharge-your-recruiting-machine-heres-how%2F%3Futm_content%3DEntryCard%26utm_source%3Dfacebook%26utm_medium%3Dsocial%23rt_u%3D1479496131_dRowgI" tabindex="0" title="Share Turbocharge Your Recruiting Machine — Here’s How on Facebook" id="A_78"><span id="SPAN_79"></span></a>
+                                    <svg id="svg_80">
+                                        <g id="g_81">
+                                            <path id="path_82">
+                                            </path>
+                                        </g>
+                                    </svg>
+                                </div>
+                                <h3 id="H3_83">
+                                    <a href="/review/turbocharge-your-recruiting-machine-heres-how/" id="A_84">Turbocharge Your Recruiting Machine — Here’s How</a>
+                                </h3>
+                                <p id="P_85">
+                                    NerdWallet VP of People Operations Flo Thinh outlines the profile of an exceptional Head of Recruiting as well how to design a magical candidate experience.
+                                </p> <a href="/review/turbocharge-your-recruiting-machine-heres-how/" id="A_86">Keep reading</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="DIV_87">
+                        <div id="DIV_88">
+                            <a href="/review/what-obamas-tech-startup-has-to-teach-about-adaptability/" id="A_89"></a>
+                            <div id="DIV_90">
+                                <div id="DIV_91">
+                                    <a href="/review/management/" id="A_92">Management</a><a href="https://twitter.com/intent/tweet?text=What%20Obama%E2%80%99s%20Tech%20Startup%20Has%20to%20Teach%20About%20Adaptability%20%E2%80%93%20http%3A%2F%2Ffirstround.com%2Freview%2Fwhat-obamas-tech-startup-has-to-teach-about-adaptability%2F%3Futm_content%3DEntryCard%26utm_source%3Dtwitter%26utm_medium%3Dsocial%23rt_u%3D1479496131_dRowgI" tabindex="0" title="Share What Obama’s Tech Startup Has to Teach About Adaptability on Twitter" id="A_93"><span id="SPAN_94"></span></a>
+                                    <svg id="svg_95">
+                                        <g id="g_96">
+                                            <path id="path_97">
+                                            </path>
+                                        </g>
+                                    </svg> <a href="https://www.facebook.com/sharer.php?u=http%3A%2F%2Ffirstround.com%2Freview%2Fwhat-obamas-tech-startup-has-to-teach-about-adaptability%2F%3Futm_content%3DEntryCard%26utm_source%3Dfacebook%26utm_medium%3Dsocial%23rt_u%3D1479496131_dRowgI" tabindex="0" title="Share What Obama’s Tech Startup Has to Teach About Adaptability on Facebook" id="A_98"><span id="SPAN_99"></span></a>
+                                    <svg id="svg_100">
+                                        <g id="g_101">
+                                            <path id="path_102">
+                                            </path>
+                                        </g>
+                                    </svg>
+                                </div>
+                                <h3 id="H3_103">
+                                    <a href="/review/what-obamas-tech-startup-has-to-teach-about-adaptability/" id="A_104">What Obama’s Tech Startup Has to Teach About Adaptability</a>
+                                </h3>
+                                <p id="P_105">
+                                    USDS marketing chief and former head of marketing for Google X Janine Gianfredi shares her lessons on how to build adaptable teams, even in the most rigid and regulated environments.
+                                </p> <a href="/review/what-obamas-tech-startup-has-to-teach-about-adaptability/" id="A_106">Keep reading</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="DIV_107">
+                        <div id="DIV_108">
+                            <a href="/review/your-database-is-your-prison-heres-how-expensify-broke-free/" id="A_109"></a>
+                            <div id="DIV_110">
+                                <div id="DIV_111">
+                                    <a href="/review/engineering/" id="A_112">Engineering</a><a href="https://twitter.com/intent/tweet?text=Your%20Database%20is%20Your%20Prison%20%E2%80%94%20Here%E2%80%99s%20How%20Expensify%20Broke%20Free%20%E2%80%93%20http%3A%2F%2Ffirstround.com%2Freview%2Fyour-database-is-your-prison-heres-how-expensify-broke-free%2F%3Futm_content%3DEntryCard%26utm_source%3Dtwitter%26utm_medium%3Dsocial%23rt_u%3D1479496131_dRowgI" tabindex="0" title="Share Your Database is Your Prison — Here’s How Expensify Broke Free on Twitter" id="A_113"><span id="SPAN_114"></span></a>
+                                    <svg id="svg_115">
+                                        <g id="g_116">
+                                            <path id="path_117">
+                                            </path>
+                                        </g>
+                                    </svg> <a href="https://www.facebook.com/sharer.php?u=http%3A%2F%2Ffirstround.com%2Freview%2Fyour-database-is-your-prison-heres-how-expensify-broke-free%2F%3Futm_content%3DEntryCard%26utm_source%3Dfacebook%26utm_medium%3Dsocial%23rt_u%3D1479496131_dRowgI" tabindex="0" title="Share Your Database is Your Prison — Here’s How Expensify Broke Free on Facebook" id="A_118"><span id="SPAN_119"></span></a>
+                                    <svg id="svg_120">
+                                        <g id="g_121">
+                                            <path id="path_122">
+                                            </path>
+                                        </g>
+                                    </svg>
+                                </div>
+                                <h3 id="H3_123">
+                                    <a href="/review/your-database-is-your-prison-heres-how-expensify-broke-free/" id="A_124">Your Database is Your Prison — Here’s How Expensify Broke Free</a>
+                                </h3>
+                                <p id="P_125">
+                                    Startups can fall into dangerous defaults when it comes to database architecture. Expensify founder and CEO David Barrett shares how his company sidestepped these missteps and made its database architecture one of its competitive advantages.
+                                </p> <a href="/review/your-database-is-your-prison-heres-how-expensify-broke-free/" id="A_126">Keep reading</a>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div ng-if="wCtrl.categories[1].selected">
-            <h1 class="headerText">{{wCtrl.categories[1].category}}</h1>
-            <span>Powered by <a href="https://bing.com" target="new_blank">Bing</a>, <a href="https://NewsAPI.org" target="new_blank">News API Org</a></span>
-            <div class="row">
-                <loader-effect ng-if="!wCtrl.pubsLoaded"></loader-effect>
-                <div ng-repeat="publication in wCtrl.finalPublications">
-                    <div class="col-sm-12 col-xs-12 col-md-offset-3 col-lg-offset-3 col-md-6 col-lg-6">
-                        <div class="card">
-                            <div class="card-action bottom-action" ng-if="publication[1].source" style="font-weight: bold">
-                                Publication From {{publication[1].source}}
+            </div>-->
+            <!--<div id="DIV_127">
+                <div id="DIV_128">
+                    <div id="DIV_129">
+                        <div id="DIV_130">
+                            <a href="/review/the-case-for-startups-to-put-cx-at-their-core/" id="A_131"></a>
+                            <div id="DIV_132">
+                                <div id="DIV_133">
+                                    <a href="/review/pr-and-marketing/" id="A_134">PR &amp; Marketing</a><a href="https://twitter.com/intent/tweet?text=The%20Case%20For%20Startups%20to%20Put%20CX%20at%20Their%20Core%20%E2%80%93%20http%3A%2F%2Ffirstround.com%2Freview%2Fthe-case-for-startups-to-put-cx-at-their-core%2F%3Futm_content%3DEntryCard%26utm_source%3Dtwitter%26utm_medium%3Dsocial%23rt_u%3D1479496131_dRowgI" tabindex="0" title="Share The Case For Startups to Put CX at Their Core on Twitter" id="A_135"><span id="SPAN_136"></span></a>
+                                    <svg id="svg_137">
+                                        <g id="g_138">
+                                            <path id="path_139">
+                                            </path>
+                                        </g>
+                                    </svg> <a href="https://www.facebook.com/sharer.php?u=http%3A%2F%2Ffirstround.com%2Freview%2Fthe-case-for-startups-to-put-cx-at-their-core%2F%3Futm_content%3DEntryCard%26utm_source%3Dfacebook%26utm_medium%3Dsocial%23rt_u%3D1479496131_dRowgI" tabindex="0" title="Share The Case For Startups to Put CX at Their Core on Facebook" id="A_140"><span id="SPAN_141"></span></a>
+                                    <svg id="svg_142">
+                                        <g id="g_143">
+                                            <path id="path_144">
+                                            </path>
+                                        </g>
+                                    </svg>
+                                </div>
+                                <h3 id="H3_145">
+                                    <a href="/review/the-case-for-startups-to-put-cx-at-their-core/" id="A_146">The Case For Startups to Put CX at Their Core</a>
+                                </h3>
+                                <p id="P_147">
+                                    At eero, the Customer Experience (CX) team is known as the "truth squad." Here's how its CEO and Co-founder Nick Weaver and Head of CX Dana Lindsay built and scaled an essential — but often overlooked — discipline at startups.
+                                </p> <a href="/review/the-case-for-startups-to-put-cx-at-their-core/" id="A_148">Keep reading</a>
                             </div>
-                            <div class="card-image">
-                                <div class="imageDivPub"><img style="display: inline !important; margin-top: 10px; width: 100% !important;" class="img-responsive" ng-src={{publication[1].article.urlToImage}} ng-if="publication[1].article.urlToImage != ''"></div>
-                                <div class="imageDivPub"><img style="display: inline !important; margin-top: 10px; width: 100% !important;" class="img-responsive" src='/imgs/iot.jpg' ng-if="publication[1].article.urlToImage == ''"></div>
-                                <div style="margin: 35px; font-weight: bold;" class="card-title">{{publication[1].article.title}}</div>
-                            </div>
-
-                               <div class="card-content">
-                                <p>{{publication[1].article.description}}</p>
-                            </div>
-                            <div class="card-action" id="renderPage" ng-click="wCtrl.renderPage(publication[1].article.url)">
-                                <a ng-click="wCtrl.renderExternal(publication[1].article.url)"
-                                   href="{{publication[1].article.url}}" target="new_blank">Link</a>
+                        </div>
+                    </div>
+                    <div id="DIV_149">
+                        <div id="DIV_150">
+                            <a href="/review/when-fear-is-a-competitive-advantage-4-steps-to-make-it-work-for-you/" id="A_151"></a>
+                            <div id="DIV_152">
+                                <div id="DIV_153">
+                                    <a href="/review/people-and-culture/" id="A_154">People &amp; Culture</a><a href="https://twitter.com/intent/tweet?text=When%20Fear%20Is%20a%20Competitive%20Advantage%20%E2%80%94%204%20Steps%20to%20Make%20It%20Work%20for%20You%20%E2%80%93%20http%3A%2F%2Ffirstround.com%2Freview%2Fwhen-fear-is-a-competitive-advantage-4-steps-to-make-it-work-for-you%2F%3Futm_content%3DEntryCard%26utm_source%3Dtwitter%26utm_medium%3Dsocial%23rt_u%3D1479496131_dRowgI" tabindex="0" title="Share When Fear Is a Competitive Advantage — 4 Steps to Make It Work for You on Twitter" id="A_155"><span id="SPAN_156"></span></a>
+                                    <svg id="svg_157">
+                                        <g id="g_158">
+                                            <path id="path_159">
+                                            </path>
+                                        </g>
+                                    </svg> <a href="https://www.facebook.com/sharer.php?u=http%3A%2F%2Ffirstround.com%2Freview%2Fwhen-fear-is-a-competitive-advantage-4-steps-to-make-it-work-for-you%2F%3Futm_content%3DEntryCard%26utm_source%3Dfacebook%26utm_medium%3Dsocial%23rt_u%3D1479496131_dRowgI" tabindex="0" title="Share When Fear Is a Competitive Advantage — 4 Steps to Make It Work for You on Facebook" id="A_160"><span id="SPAN_161"></span></a>
+                                    <svg id="svg_162">
+                                        <g id="g_163">
+                                            <path id="path_164">
+                                            </path>
+                                        </g>
+                                    </svg>
+                                </div>
+                                <h3 id="H3_165">
+                                    <a href="/review/when-fear-is-a-competitive-advantage-4-steps-to-make-it-work-for-you/" id="A_166">When Fear Is a Competitive Advantage — 4 Steps to Make It Work for You</a>
+                                </h3>
+                                <p id="P_167">
+                                    Justin Milano and Dan Cordaro have built their reputations on the science of overcoming fear — today, they help dozens of startups turn these feelings into opportunity.
+                                </p><a href="/review/when-fear-is-a-competitive-advantage-4-steps-to-make-it-work-for-you/" id="A_168">Keep reading</a>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div ng-if="wCtrl.categories[2].selected">
-            <h1 class="headerText">{{wCtrl.categories[2].category}}</h1>
-            <h2 style="color: darkred; font-weight: bold">Pending API Access</h2>
-        </div>
-        <div ng-if="wCtrl.categories[3].selected">
-            <h1 class="headerText">{{wCtrl.categories[3].category}}</h1>
-            <h2 style="color: darkred; font-weight: bold">Pending API Access</h2>
-        </div>
-        <div ng-if="wCtrl.categories[4].selected">
-            <h1 class="headerText">{{wCtrl.categories[4].category}}</h1>
-            <h2 style="color: darkred; font-weight: bold">Pending API Access</h2>
+            </div>-->
         </div>
     </div>
 </div>
+<!--
+<div class="row" ng-repeat="articlesChunk in wCtrl.structuredArticles">
+    <news-card ng-repeat="article in articlesChunk" nc="article"></news-card>
+</div>-->

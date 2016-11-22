@@ -122,7 +122,6 @@ gulp.task('babelify-client', () => {
 gulp.task('babelify-server', () => {
     return gulp.src('server/**/*.js')
         .pipe(plugins.babel({stage: 1}))
-        /*.pipe(plugins.uglify())*/
         .on('error', plugins.util.log.bind(plugins.util))
         .pipe(gulp.dest('build/server'));
 });
@@ -144,17 +143,6 @@ gulp.task('cache-templates', () => {
             templateCacheOptions.options
         ))
         .pipe(gulp.dest('public/js'))
-});
-
-gulp.task('watch', () => {
-    gulp.task('watch', () => {
-        gulp.watch(['public/scss/**/*.scss'], () => {runSequence('css', 'copy')});
-        gulp.watch(['server/**/*.js'], ['babelify-server']);
-        gulp.watch(['public/imgs/**/*'], ['copy']);
-        gulp.watch('public/index.html', ['refresh']);
-        gulp.watch(['public/js/**/*', 'public/js/*'], ['refresh']);
-        gulp.watch(['public/templates/**/*', 'public/templates/*'], ['refresh']);
-    });
 });
 
 gulp.task('server', () => {
@@ -183,5 +171,5 @@ gulp.task('exit', () => {
 
 
 gulp.task('serve', (callback) => {
-    runSequence('clean', 'cache-templates', 'css', 'wire-dep', 'copy', 'babelify-client', 'client-bundler', 'babelify-server','watch', 'server', callback);
+    runSequence('clean', 'cache-templates', 'css', 'wire-dep', 'copy', 'babelify-client', 'client-bundler', 'babelify-server', 'server', callback);
 });

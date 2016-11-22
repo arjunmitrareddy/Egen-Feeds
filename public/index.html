@@ -2,8 +2,9 @@
 <html lang="en" ng-app="egen-feed">
 <head>
     <meta charset="UTF-8">
-    <title>Egen Feed</title>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>IOT</title>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <base href="/">
     <link rel="icon" href="imgs/favicon.png">
@@ -29,16 +30,13 @@
     <!-- endbuild -->
 </head>
 <body>
-<div ui-view class="container-fluid" style="height: 100%"></div>
+<ui-view></ui-view>
 <!-- build:js js/lib.js -->
 <!-- bower:js -->
 <script src="/bower_components/angular/angular.js"></script>
 <script src="/bower_components/jquery/dist/jquery.js"></script>
 <script src="/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
 <script src="/bower_components/lodash/lodash.js"></script>
-<script src="/bower_components/angular-animate/angular-animate.js"></script>
-<script src="/bower_components/socket.io-client/socket.io.js"></script>
-<script src="/bower_components/gsap/src/uncompressed/TweenMax.js"></script>
 <script src="/bower_components/bootstrap/dist/js/bootstrap.js"></script>
 <script src="/bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
 <!-- endbower -->
@@ -47,12 +45,13 @@
 <!-- inject:js -->
 <script src="/public/js/app.module.js"></script>
 <script src="/public/js/app.config.js"></script>
-<script src="/public/js/app.loaderDirective.js"></script>
+<script src="/public/js/app.hoseController.js"></script>
+<script src="/public/js/app.newsCardDirective.js"></script>
+<script src="/public/js/app.newsCardDirectiveController.js"></script>
 <script src="/public/js/app.run.js"></script>
+<script src="/public/js/app.serviceConnector.js"></script>
 <script src="/public/js/app.templatesCache.js"></script>
-<script src="/public/js/app.urlDirective.js"></script>
 <script src="/public/js/app.welcomeController.js"></script>
-<script src="/public/js/serviceConnector.js"></script>
 <!-- endinject -->
 <!-- endbuild -->
 </body>

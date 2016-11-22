@@ -3,39 +3,36 @@
     angular.module('egen-feed')
         .run(run);
 
-    run.$inject = ['$state', '$rootScope'];
+    run.$inject = ['$state'];
     /* @ngInject */
-    function run($state, $rootScope) {
-        $rootScope.socket = io.connect(location.protocol + "//" + location.host);
-        $rootScope.socket.emit('get-tweets');
-
+    function run($state) {
+        $state.go('bing');
         function registerServiceWorker() {
             if (!navigator.serviceWorker) {
-                return;
-            }
-            return navigator.serviceWorker.register('/sw.js').then(function(registrationObject) {
-                if (!navigator.serviceWorker.controller) {
-                    return;
-                }
-                if (registrationObject.waiting) { //means service worker is ready to be updated
-                    update(registrationObject.waiting);
-                }
-                if (registrationObject.installing) {
-                    trackInstall(registrationObject.installing);
-                    return;
-                }
-                registrationObject.addEventListener('updatefound', function() {
-                    trackInstall(registrationObject.installing);
-                });
-                navigator.serviceWorker.controller.addEventListener('controllerchange', function() {
-                    window.location.reload();
-                });
+                return navigator.serviceWorker.register('/sw.js').then((registrationObject) => {
+                    if (!navigator.serviceWorker.controller) {
+                        return;
+                    }
+                    if (registrationObject.waiting) { //means service worker is ready to be updated
+                        update(registrationObject.waiting);
+                    }
+                    if (registrationObject.installing) {
+                        trackInstall(registrationObject.installing);
+                        return;
+                    }
+                    registrationObject.addEventListener('updatefound', () => {
+                        trackInstall(registrationObject.installing);
+                    });
+                    navigator.serviceWorker.controller.addEventListener('controllerchange', () => {
+                        window.location.reload();
+                    });
 
-            });
+                });
+            }
         }
 
         function trackInstall(worker) {
-            worker.addEventListener('statechange', function() {
+            worker.addEventListener('statechange', () => {
                 if (worker.state == 'installed') {
                     update(worker);
                 }

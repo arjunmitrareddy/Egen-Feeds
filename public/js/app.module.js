@@ -4,7 +4,7 @@ function loadScripts(urls, controller, failure) {
 
     if (urls.length == 0) return;
 
-    urls.forEach(function(url) {
+    urls.forEach((url) => {
         var script = document.createElement('script');
         script.onload = function() {
             if (errored) return;
@@ -38,7 +38,6 @@ loadScripts(polyfillsNeeded);
     angular.module('egen-feed',
         [
             'ui.router',
-            'ngAnimate',
             'ui.bootstrap'
         ]);
 })();
