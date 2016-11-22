@@ -3,15 +3,9 @@ var plugins = require('gulp-load-plugins')();
 var runSequence = require('run-sequence');
 var wiredep = require('wiredep').stream;
 var del = require('del');
-var assign = require('lodash/assign');
-var browserify = require('browserify');
-var watchify = require('watchify');
-var babelify = require('babelify');
 var mergeStream = require('merge-stream');
-var source = require('vinyl-source-stream');
-var buffer = require('vinyl-buffer');
 var args = process.argv.slice(3);
-
+require('events').EventEmitter.prototype._maxListeners = 100;
 gulp.task('clean', () => {
     del(['build']);
 });
@@ -52,70 +46,16 @@ gulp.task('copy', () => {
             'bower_components/bootstrap/fonts/*',
             'bower_components/font-awesome/fonts/*'
         ]).pipe(gulp.dest('build/public/fonts')),
-        gulp.src('public/json/*.json').pipe(gulp.dest('build/public/json')),
-        gulp.src('public/manifest.json').pipe(gulp.dest('build/public')),
         gulp.src('public/templates/*.html').pipe(gulp.dest('build/public/templates')))
 
 });
 
-function createBundle(src) {
-    if (!src.push) {
-        src = [src];
-    }
-
-    var customOpts = {
-        entries: src,
-        debug: true
-    };
-    var opts = assign({}, watchify.args, customOpts);
-    var b = watchify(browserify(opts));
-
-    b.transform(babelify.configure({
-        stage: 1
-    }));
-
-    b.on('log', plugins.util.log);
-    return b;
-}
-
-function bundle(b, outputPath) {
-    var splitPath = outputPath.split('/');
-    var outputFile = splitPath[splitPath.length - 1];
-    var outputDir = splitPath.slice(0, -1).join('/');
-
-    return b.bundle()
-        .on('error', plugins.util.log.bind(plugins.util, 'Browserify Error'))
-        .pipe(source(outputFile))
-        .pipe(buffer())
-        .pipe(plugins.sourcemaps.init({loadMaps: true}))
-        .pipe(plugins.sourcemaps.write('./'))
-        .pipe(gulp.dest('build/public/' + outputDir));
-}
-
-var jsBundles = {
-    'js/polyfills/promise.js': createBundle('./public/js/polyfills/promise.js'),
-    'js/polyfills/url.js': createBundle('./public/js/polyfills/url.js'),
-    'sw.js': createBundle(['./public/js/sw/index.js', './public/js/sw/preroll/index.js'])
-};
-
-gulp.task('client-bundler', () => {
-    return mergeStream.apply(null,
-        Object.keys(jsBundles).map(function(key) {
-            return bundle(jsBundles[key], key);
-        })
-    );
-});
-
-
-
 gulp.task('babelify-client', () => {
     var assets = plugins.useref({searchPath: './'});
     var cssFilter = plugins.filter('**/*.css', {restore: true});
-    var jsFilter = plugins.filter(['**/*.js', '!**/*.*.js'], {restore: true});
-    var appJsFilter = plugins.filter('**/*.*.js', {restore: true});
+    var jsFilter = plugins.filter('**/*.js', {restore: true});
     gulp.src('public/index.html').pipe(plugins.plumber()).pipe(assets).pipe(cssFilter).pipe(plugins.csso({comments: false})).pipe(plugins.sourcemaps.init()).pipe(plugins.sourcemaps.write('./')).pipe(cssFilter.restore)
-        .pipe(jsFilter)/*.pipe(plugins.uglify())*/.pipe(jsFilter.restore)
-        .pipe(appJsFilter)/*.pipe(plugins.uglify())*/.pipe(plugins.babel({stage: 1})).pipe(jsFilter.restore)
+        .pipe(jsFilter).pipe(jsFilter.restore)
         .pipe(gulp.dest('build/public'))
 });
 
@@ -156,12 +96,8 @@ gulp.task('server', () => {
     ], plugins.developServer.restart);
 });
 
-gulp.task('refresh', (callback) => {
-    runSequence('css', 'wire-dep', 'copy', 'babelify-client', 'cache-templates', 'client-bundler', 'babelify-server', callback);
-});
-
 gulp.task('heroku', (callback) => {
-    runSequence('clean', 'cache-templates', 'css', 'wire-dep', 'copy', 'babelify-client', 'client-bundler', 'babelify-server','exit', callback);
+    runSequence('clean', 'cache-templates', 'css', 'wire-dep', 'copy', 'babelify-client', 'babelify-server', callback);
 
 });
 
@@ -171,5 +107,5 @@ gulp.task('exit', () => {
 
 
 gulp.task('serve', (callback) => {
-    runSequence('clean', 'cache-templates', 'css', 'wire-dep', 'copy', 'babelify-client', 'client-bundler', 'babelify-server', 'server', callback);
+    runSequence('clean', 'cache-templates', 'css', 'wire-dep', 'copy', 'babelify-client', 'babelify-server', 'server', callback);
 });
