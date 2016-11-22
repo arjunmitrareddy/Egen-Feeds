@@ -28,9 +28,7 @@
     "request": "^2.75.0",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0",
-    "watchify": "^3.3.1"
-  },
-  "devDependencies": {
+    "watchify": "^3.3.1",
     "bower": "^1.7.9",
     "del": "^2.2.1",
     "gulp": "^3.9.0",
@@ -55,11 +53,14 @@
     "run-sequence": "^1.1.2",
     "wiredep": "^4.0.0"
   },
+  "devDependencies": {
+
+  },
   "scripts": {
     "dep": "npm install && bower install",
-    "start": "gulp server",
+    "start": "node build/server/index.js",
     "serve": "gulp serve",
-    "postinstall": "bower install && gulp heroku"
+    "postinstall": "bower install"
   },
   "engines": {
     "node": "4.1.1"
