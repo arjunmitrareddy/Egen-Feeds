@@ -61,8 +61,5 @@
     "serve": "gulp serve",
     "postinstall": "bower install && gulp heroku"
   },
-  "engines": {
-    "node": "4.1.1"
-  },
   "license": "ISC"
 }
