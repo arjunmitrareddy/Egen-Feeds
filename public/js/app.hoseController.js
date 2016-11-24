@@ -18,7 +18,7 @@
         function getNews() {
                 var request = {
                     params: {
-                        "q": "iot",
+                        "q": "internet of things",
                         "token": "32902d09-a4d2-40ff-ab15-3228d81f5a84",
                         "size": 100,
                         "format": "json",
