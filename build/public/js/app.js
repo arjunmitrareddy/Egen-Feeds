@@ -50,7 +50,7 @@
         function getNews() {
                 var request = {
                     params: {
-                        "q": "internet of things",
+                        "q": "iot",
                         "token": "32902d09-a4d2-40ff-ab15-3228d81f5a84",
                         "size": 100,
                         "format": "json",
@@ -62,7 +62,7 @@
                         wCtrl.articles = data.posts;
 
                         wCtrl.articles = _.map(_.filter(wCtrl.articles, (article) => {
-                            return !!article.thread.main_image;
+                            return !!article.thread.main_image && !!article.title;
                         }), (article) => {
                             article.image = article.thread.main_image;
                             article.name = article.title;
